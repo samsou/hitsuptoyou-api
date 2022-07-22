@@ -8,10 +8,7 @@ Change the *.env.example* to *.env* and add your database info
 
 For SQLite, add
 ```
-DB_CONNECTION=sqlite
-DB_HOST=127.0.0.1
-DB_PORT=3306
-```
+
 
 Create a _database.sqlite_ file in the _database_ directory
 
@@ -24,6 +21,8 @@ php artisan serve
 
 ```
 # Public
+GET   /api/asks
+GET   /api/asks/:id
 
 GET   /api/products
 GET   /api/products/:id
