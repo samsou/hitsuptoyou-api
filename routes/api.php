@@ -3,6 +3,10 @@
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AskController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\SalaryController;
+use App\Http\Controllers\AskFormatController;
+use App\Http\Controllers\AskCategoryController;
+use App\Models\Activity;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -30,6 +34,11 @@ Route::get('/asks/', [AskController::class, 'index']);
 Route::get('/asks/{id}', [AskController::class, 'show']);
 Route::get('/asks/search/{title}', [AskController::class, 'search']);
 
+Route::resource('activities', ActivityController::class)->except(['store', 'update', 'destroy']);
+Route::resource('salaries', SalaryController::class)->except(['store', 'update', 'destroy']);
+Route::resource('ask-categories', AskCategoryController::class)->except(['store', 'update', 'destroy']);
+Route::resource('ask-formats', AskFormatController::class)->except(['store', 'update', 'destroy']);
+
 
 // Protected routes
 Route::group(['middleware' => ['auth:sanctum']], function () {
@@ -40,6 +49,11 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/asks/', [AskController::class, 'store']);
     Route::put('/asks/{id}', [AskController::class, 'update']);
     Route::delete('/asks/{id}', [AskController::class, 'destroy']);
+
+    Route::resource('activities', ActivityController::class)->except(['index', 'show']);
+    Route::resource('salaries', SalaryController::class)->except(['index', 'show']);
+    Route::resource('ask-categories', AskCategoryController::class)->except(['index', 'show']);
+    Route::resource('ask-formats', AskFormatController::class)->except(['index', 'show']);
 });
 
 

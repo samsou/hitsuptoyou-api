@@ -19,8 +19,25 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'surname',
         'email',
         'password',
+        'phone',
+        'birthday',
+        'occupation',
+        'salary',
+        'address',
+        'street',
+        'zip_code',
+        'country',
+        'civility',
+        'company_name',
+        'company_number',
+        'website',
+        'is_pro_user',
+        'is_admin',
+        'is_super_admin',
+        'official_registration_document_path',
     ];
 
     /**
